@@ -1,6 +1,12 @@
 package CodingPracticeTest01;
 
-
+class nameException extends Exception
+{
+	nameException(String s)
+	{
+		super(s);
+	}
+}
 class Employee
 {
 	private String firstName;
@@ -12,30 +18,32 @@ class Employee
 		this.lastName = lastName;
 	}
 
-  void Validation(String FName, String Lname) throws NullPointerException
+  static void Validation(String firstName, String lastName) throws NullPointerException
   {
-	/*  int tmp1 = firstName.length();
-	  int tmp2 = lastName.length();*/
 		  if (firstName==null && lastName==null)
-			  throw new NullPointerException("Entry Missing");
-	/*		try {
-					if(tmp1<3  &&  tmp2<3)
-						
-			} catch (Exception e) {
-				
-			}*/
-	  System.out.println("The name entered is:" + firstName + " " + lastName);
-		
+			  throw new NullPointerException("Entry Missing");	
 }
+  static void ValidateLength(String firstName, String lastName) throws nameException
+  {
+	  		if(firstName.trim().length()<3 && lastName.trim().length()<3)
+	  			throw new nameException("name should be minimum 3 characters");
+  }
 }
 
 public class Employ {
 
 	public static void main(String[] args) {
-	
-Employee emp = new Employee();
+	try{
+		Employee emp = new Employee();
 		emp.Validation("josh", "smith");
-     
+		emp.ValidateLength("joe", "tim");
+	}
+	catch(Exception m)
+	{
+		System.out.println("Exception Occured:" + m);
+	}
+
 	}
 
 }
+
