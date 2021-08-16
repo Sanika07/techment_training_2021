@@ -13,14 +13,14 @@ import com.techment.dao.TicketDao;
 public class Ticket implements TicketDao {
 
 
-	public static int pnrdConstant =101;
+	public static int pnrValue =101;
 	@Override
 	public Train findTrain(int tno) {
 		try
 		{
 			Train train = null;
 			Class.forName(DRIVER_NAME);
-			Connection con =  DriverManager.getConnection(URL, "root", "@admin123");			
+			Connection con =  DriverManager.getConnection(URL, "root", "mysql123");			
 			PreparedStatement ps=con.prepareStatement("select * from TRAINS where TRAIN_NO =? ");
 			ps.setInt(1, tno);		
 			ResultSet rs=ps.executeQuery();		
@@ -97,8 +97,8 @@ public class Ticket implements TicketDao {
 	public String generatePNR(Train train,LocalDate date)
 	{
 		String Id = date.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-		String pnr=(Character.toString(train.getSource().charAt(0))+Character.toString(train.getDestination().charAt(0))+"_"+Id+"_"+Integer.toString(pnrdConstant));
-		pnrdConstant++;
+		String pnr=(Character.toString(train.getSource().charAt(0))+Character.toString(train.getDestination().charAt(0))+"_"+Id+"_"+Integer.toString(pnrValue));
+		pnrValue++;
 		return pnr; }
 	
 	
