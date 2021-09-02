@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class Insert {
+public class InsertData {
 
 	public static void main(String[] args) {
 
@@ -13,11 +13,8 @@ public class Insert {
           
         em.getTransaction().begin();
         
-//        Author au1 = new Author(1, "ram", "kumar", "verma", 913198763);
-//        Author au2 = new Author(1, "sachin", "kumar", "soni", 913648373);
-        
         Author au1 = new Author();
-        au1.setId(3);
+        au1.setId(1);
         au1.setFirstName("mahendra");
         au1.setMiddleName("singh");
         au1.setLastName("dhoni");
@@ -26,7 +23,7 @@ public class Insert {
         em.persist(au1);
         
         Author au2 = new Author();
-        au2.setId(4);
+        au2.setId(2);
         au2.setFirstName("raj");
         au2.setMiddleName("kumar");
         au2.setLastName("yadav");
@@ -34,6 +31,23 @@ public class Insert {
         
         em.persist(au2);
         
+	Author au3 = new Author();
+        au3.setId(3);
+        au3.setFirstName("sachin");
+        au3.setMiddleName("kumar");
+        au3.setLastName("yadav");
+        au3.setNumber(917648673);
+        
+        em.persist(au3);
+		
+	Author au4 = new Author();
+        au4.setId(4);
+        au4.setFirstName("shiva");
+        au4.setMiddleName("kumar");
+        au4.setLastName("yadav");
+        au4.setNumber(919888373);
+        
+        em.persist(au4);
         em.getTransaction().commit();  
         
         emf.close();  
