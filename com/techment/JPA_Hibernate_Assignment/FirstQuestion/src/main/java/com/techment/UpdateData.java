@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class Update {
+public class UpdateData {
 
 	public static void main(String[] args) {
 
@@ -21,7 +21,7 @@ public class Update {
         System.out.println("Author's last name: "+a.getLastName());
         System.out.println("Author's phone number: "+a.getNumber());
         
-        a.setFirstName("rohan");
+        a.setFirstName("rocky");
         
         System.out.println("After Updation");  
         System.out.println("Author Id: "+a.getId());
